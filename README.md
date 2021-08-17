@@ -1,16 +1,19 @@
-# Title
+# Battleshipasaurus / B4ttl3sh1p
 
-Description of project
+! # B4ttl3sh1p (potential game name)
+
+Battleshipasaurus is a Battleship game created using **Python**, and runs on a mock terminal on Heroku.
 
 ## Instructions
 
-instruction on how to use the game or program
+Battleshipasaurus
 
 ## Features
 
 ### Existing Features
 
 - Feature one
+
   - Description here
 
 - Feature two
