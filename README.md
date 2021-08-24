@@ -4,6 +4,8 @@
 
 Battleshipasaurus is a Battleship game created using **Python**, and runs on a mock terminal on Heroku.
 
+[Live Project](https://www.heroku.com)
+
 ## Instructions
 
 Battleshipasaurus
@@ -45,3 +47,5 @@ class and methods used to create program
 ## Deployment
 
 ## Credits
+
+[ASCII table](http://sticksandstones.kstrom.com/appen.html)
