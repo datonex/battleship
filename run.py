@@ -29,5 +29,7 @@ print_board(board)
 ship_row = random_row(board)
 ship_col = random_col(board)
 
-
-
+print(ship_row, ship_col)
+guess_col = (input("Guess col: "))
+guess_row = int(input("Guess row: "))
+print(f'You entered position: {guess_col}{guess_row}')
