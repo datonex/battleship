@@ -1,5 +1,5 @@
 # Imports
-
+from random import randint
 # Variables
 grid_size = 9
 board = [['.'] * grid_size for i in range(grid_size)]
@@ -16,6 +16,18 @@ def print_board(board_in):
     print("\n  " + " ".join(str(i) for i in list(map(chr, range(65, 65 + grid_size)))))
     for i in range(grid_size):
         print(str(i + 1) + " " + " ".join(str(i) for i in board_in[i]))
+
+def random_row(board_in):
+    row = randint(0, len(board_in) - 1)
+    return row
+
+def random_col(board_in):
+    col = randint(0, len(board_in) - 1)
+    return col
+
 print_board(board)
+ship_row = random_row(board)
+ship_col = random_col(board)
+
 
 
