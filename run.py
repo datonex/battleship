@@ -1,5 +1,7 @@
 # Imports
 from random import randint
+import string
+
 # Variables
 grid_size = 9
 board = [['.'] * grid_size for i in range(grid_size)]
@@ -29,7 +31,18 @@ print_board(board)
 ship_row = random_row(board)
 ship_col = random_col(board)
 
-print(ship_row, ship_col)
-guess_col = (input("Guess col: "))
+# Remove print statement at end of project
+# print(letter_and_index_conversion(ship_col, grid_size), ship_row)
+letter_col = str(input("Guess col: ")).upper()
+guess_col = letter_and_index_conversion(letter_col, grid_size)
 guess_row = int(input("Guess row: "))
-print(f'You entered position: {guess_col}{guess_row}')
+print(f'You entered position: {letter_col.upper()}{guess_row}')
+
+if guess_row == ship_row and guess_col == ship_col:
+    print("Congratulations Captain! You got a hit!")
+    board[guess_col][guess_row] = 'O'
+    print_board(board)
+else: 
+    print("Your aim is WAY off!")
+    board[guess_col][guess_row] = 'X'
+    print_board(board)
