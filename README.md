@@ -31,6 +31,10 @@ class and methods used to create program
 
 ### Bugs
 
+- Fix bug where value entered in terminal did not match the board index.
+
+- Fix bug where console with give error message when script is run for the first time
+
 #### Solved bugs
 
 - Fixed bug description
@@ -48,4 +52,6 @@ class and methods used to create program
 
 ## Credits
 
-[ASCII table](http://sticksandstones.kstrom.com/appen.html)
+- [Codeacademy Python 2: Lists and Functions](https://www.codecademy.com/courses/learn-python/lessons/battleship)
+- [ASCII table](http://sticksandstones.kstrom.com/appen.html)
+- [Alphabet string](https://www.kite.com/python/answers/how-to-make-a-list-of-the-alphabet-in-python)
