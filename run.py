@@ -8,7 +8,8 @@ grid_size = 9
 board = [['.'] * grid_size for i in range(grid_size)]
 alphabet_list = list(string.ascii_uppercase)
 turn = 0
-total_turns = math.floor(grid_size**2/1.25)
+total_turns = 2
+# total_turns = math.floor(grid_size**2/1.25)
 
 # Ship Class
 
@@ -50,6 +51,7 @@ ship_col = random_col(board) - 1
 def main():
     for turn in range(total_turns):
         print(f'Turn: {turn + 1} of {total_turns}')
+        turn += 1
         
         # Remove print statement at end of project
         print(letter_and_index_conversion(ship_col, grid_size), ship_row)
@@ -57,7 +59,9 @@ def main():
         letter_col = str(input(f'Guess a column between {alphabet_list[0]} and {alphabet_list[grid_size - 1]}: \n')).upper()
         guess_col = letter_and_index_conversion(letter_col, grid_size)
         guess_row = int(input(f'Guess a row number between 1 and {grid_size}: \n'))
+        
         print(f'You entered: {letter_col.upper()}{guess_row}')
+        
         if guess_row == ship_row and guess_col == ship_col:
             board[guess_row - 1][guess_col - 1] = 'X'
             print_board(board)
@@ -71,8 +75,11 @@ def main():
             elif board[guess_row - 1][guess_col - 1] == 'X' or board[guess_row - 1][guess_col - 1] == '*':
                 print('You guessed this one already -_-')
             else:
-                board[guess_row - 1][guess_col - 1] = '*'
-                print_board(board)
                 print('Your aim is WAY off!')
+                board[guess_row - 1][guess_col - 1] = '*'
+                if turn == total_turns:
+                    print('Game Over! You ran out of turns')
+                    turn = 0
+                print_board(board)
 
 main()
