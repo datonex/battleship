@@ -53,11 +53,17 @@ guess_col = letter_and_index_conversion(letter_col, grid_size)
 guess_row = int(input(f'Guess a row number between 1 and {grid_size}: \n'))
 print(f'You entered: {letter_col.upper()}{guess_row}')
 
+
 if guess_row == ship_row and guess_col == ship_col:
     print("Congratulations Captain! You got a hit!")
     board[guess_row - 1][guess_col - 1] = 'X'
     print_board(board)
-else: 
-    print("Your aim is WAY off!")
-    board[guess_row - 1][guess_col - 1] = '*'
-    print_board(board)
+else:
+    smallest_col_value = letter_and_index_conversion(alphabet_list[0], grid_size)
+    largest_col_value = letter_and_index_conversion(alphabet_list[grid_size - 1], grid_size)
+    if (guess_row < 1 or guess_row > grid_size) or (guess_col < smallest_col_value or guess_col > largest_col_value):
+        print("Bruh! That's not even in the ocean o_O")
+    else:
+        print("Your aim is WAY off!")
+        board[guess_row - 1][guess_col - 1] = '*'
+        print_board(board)
