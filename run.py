@@ -39,7 +39,7 @@ def letter_and_index_conversion(value, grid_size):
         letter = list(col_dictionary.keys())[list(col_dictionary.values()).index(value)]
         return letter # return Letter
     else:
-        raise ValueError("""Value entered does not exist in the board.\n Please enter: \n a letter for the column e.g. a \n a number for the row e.g. 3""")
+        raise ValueError(f"Value entered does not exist in the board.\n Please enter: \n a letter for the column between {alphabet_list[0]} and {alphabet_list[grid_size - 1]} \n a number between 1 and {grid_size} for the row")
 
 print_board(board)
 ship_row = random_row(board) - 1
