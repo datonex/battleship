@@ -16,9 +16,9 @@ alphabet_list = list(string.ascii_uppercase)
 def print_board(board_in):
     # Use alphabet to represent columns of game board.
     # https://www.delftstack.com/howto/python/python-alphabet-list/
-    print("\n  " + " ".join(str(i) for i in list(map(chr, range(65, 65 + grid_size)))))
+    print('\n  ' + ' '.join(str(i) for i in list(map(chr, range(65, 65 + grid_size)))))
     for i in range(grid_size):
-        print(str(i + 1) + " " + " ".join(str(i) for i in board_in[i]))
+        print(str(i + 1) + ' ' + ' '.join(str(i) for i in board_in[i]))
 
 def random_row(board_in):
     row = randint(0, len(board_in) - 1)
@@ -39,10 +39,10 @@ def letter_and_index_conversion(value, grid_size):
         letter = list(col_dictionary.keys())[list(col_dictionary.values()).index(value)]
         return letter # return Letter
     else:
-        raise ValueError(f"Value entered does not exist in the board.\n Please enter: \n a letter for the column between {alphabet_list[0]} and {alphabet_list[grid_size - 1]} \n a number between 1 and {grid_size} for the row")
+        raise ValueError(f'Value entered does not exist in the board.\n Please enter: \n a letter for the column between {alphabet_list[0]} and {alphabet_list[grid_size - 1]} \n a number between 1 and {grid_size} for the row')
 
 print_board(board)
-ship_row = random_row(board) - 1
+ship_row = random_row(board)
 ship_col = random_col(board) - 1
 
 # Remove print statement at end of project
@@ -55,7 +55,7 @@ print(f'You entered: {letter_col.upper()}{guess_row}')
 
 
 if guess_row == ship_row and guess_col == ship_col:
-    print("Congratulations Captain! You got a hit!")
+    print('Congratulations Captain! You got a hit!')
     board[guess_row - 1][guess_col - 1] = 'X'
     print_board(board)
 else:
@@ -63,7 +63,9 @@ else:
     largest_col_value = letter_and_index_conversion(alphabet_list[grid_size - 1], grid_size)
     if (guess_row < 1 or guess_row > grid_size) or (guess_col < smallest_col_value or guess_col > largest_col_value):
         print("Bruh! That's not even in the ocean o_O")
+    elif board[guess_row - 1][guess_col - 1] == 'X':
+        print('You guessed this one already -_-...')
     else:
-        print("Your aim is WAY off!")
+        print('Your aim is WAY off!')
         board[guess_row - 1][guess_col - 1] = '*'
         print_board(board)
