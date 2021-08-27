@@ -69,8 +69,8 @@ def main():
             
             if (guess_row < 1 or guess_row > grid_size) or (guess_col < smallest_col_value or guess_col > largest_col_value):
                 print("Bruh! That's not even in the ocean o_O")
-            elif board[guess_row - 1][guess_col - 1] == 'X':
-                print('You guessed this one already -_-...')
+            elif board[guess_row - 1][guess_col - 1] == 'X' or board[guess_row - 1][guess_col - 1] == '*':
+                print('You guessed this one already -_-')
             else:
                 print('Your aim is WAY off!')
                 board[guess_row - 1][guess_col - 1] = '*'
