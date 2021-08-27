@@ -32,7 +32,6 @@ def random_col(board_in):
     return col
 
 def letter_and_index_conversion(value, grid_size):
-    alphabet_list = list(string.ascii_uppercase)
     number_list = [i for i in range(1,27)]
     col_dictionary = dict(zip(alphabet_list,number_list))
     
@@ -49,7 +48,7 @@ ship_row = random_row(board)
 ship_col = random_col(board) - 1
 
 def main():
-    for turn in range(grid_size + total_turns):
+    for turn in range(total_turns):
         print(f'Turn: {turn + 1} of {total_turns}')
         
         # Remove print statement at end of project
@@ -60,9 +59,9 @@ def main():
         guess_row = int(input(f'Guess a row number between 1 and {grid_size}: \n'))
         print(f'You entered: {letter_col.upper()}{guess_row}')
         if guess_row == ship_row and guess_col == ship_col:
-            print('Congratulations Captain! You got a hit!')
             board[guess_row - 1][guess_col - 1] = 'X'
             print_board(board)
+            print('Congratulations Captain! You got a hit!')
         else:
             smallest_col_value = letter_and_index_conversion(alphabet_list[0], grid_size)
             largest_col_value = letter_and_index_conversion(alphabet_list[grid_size - 1], grid_size)
@@ -72,8 +71,8 @@ def main():
             elif board[guess_row - 1][guess_col - 1] == 'X' or board[guess_row - 1][guess_col - 1] == '*':
                 print('You guessed this one already -_-')
             else:
-                print('Your aim is WAY off!')
                 board[guess_row - 1][guess_col - 1] = '*'
                 print_board(board)
+                print('Your aim is WAY off!')
 
 main()
