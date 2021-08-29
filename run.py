@@ -3,6 +3,7 @@ from random import randint
 import math
 import string
 
+
 # Variables
 grid_size = 9
 board = [['.'] * grid_size for i in range(grid_size)]
@@ -28,12 +29,12 @@ def print_board(board_in):
 
 
 def random_row(board_in):
-    row = randint(0, len(board_in) - 1)
+    row = randint(1, len(board_in) - 1)
     return row
 
 
 def random_col(board_in):
-    col = randint(0, len(board_in) - 1)
+    col = randint(1, len(board_in) - 1)
     return col
 
 
@@ -48,29 +49,40 @@ def letter_and_index_conversion(value, grid_size):
             list(col_dictionary.values()).index(value)]
         return letter  # return Letter
     else:
-        raise ValueError(
-            f'Value entered does not exist in the board.\n Please enter: \n a letter for the column between {alphabet_list[0]} and {alphabet_list[grid_size - 1]} \n a number between 1 and {grid_size} for the row')
+        raise ValueError('Invalid value please enter a number or a letter')
 
 
 def get_row():
     while True:
         try:
             guess = int(
-                input(f'Guess a number between 1 - {grid_size} \n'))
+                input(f'Guess a row: \n'))
             if guess in range(1, grid_size + 1):
-                return guess - 1
+                return guess
             else:
                 print("Bruh! That's not even in the ocean o_O")
         except ValueError:
             print(f'\nPlease enter number between 1 and {grid_size}')
 
 
+def get_col():
+    while True:
+        try:
+            guess_letter = str(input(
+                f'Guess a column: \n')).upper()
+            guess = letter_and_index_conversion(guess_letter, grid_size)
+            if guess in range(1, grid_size + 1):
+                return guess
+            else:
+                print("Bruh! That's not even in the ocean o_O")
+        except ValueError:
+            print(
+                f'\nPlease enter a letter for the column between {alphabet_list[0]} and {alphabet_list[grid_size - 1]}')
+
+
 print_board(board)
 ship_row = random_row(board)
 ship_col = random_col(board) - 1
-# remove after testing
-guess_row = get_row()
-guess_col = get_col()
 
 
 def main():
@@ -83,10 +95,11 @@ def main():
         guess_col = get_col()
         guess_row = get_row()
 
-        #print(f'You entered: {letter_col.upper()}{guess_row}')
+        print(
+            f'You entered: {letter_and_index_conversion(guess_col, grid_size)}{guess_row}')
 
         if guess_row == ship_row and guess_col == ship_col:
-            board[guess_row - 1][guess_col - 1] = 'X'
+            board[guess_row][guess_col] = 'X'
             print_board(board)
             print('Congratulations Captain! You got a hit!')
         else:
@@ -104,10 +117,9 @@ def main():
                 board[guess_row - 1][guess_col - 1] = '*'
                 if turn == total_turns:
                     print('Game Over! You ran out of turns')
-                    turn = 0
                 print_board(board)
 
 
-# main()
+main()
 
 # END
