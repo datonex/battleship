@@ -125,6 +125,7 @@ def main():
     print_board(board)
     while turn < total_turns:
 
+        print(letter_and_index_conversion(ship_col, grid_size), ship_row)
         guess_col = get_col()
         guess_row = get_row()
 
@@ -169,6 +170,31 @@ def main():
         print(f"You have {10 - ships} ships left")
 
 
-main()
+print("Welcome to battleships!")
+print(" * The objective is to sink the enemy's ships")
+print(" * Each column is represented by a letter")
+print(" * Each row is represented by a number")
+print(" * The number of turns will be show after you first turn")
+print(" * To win the game you need to find the locations of 10 ships. Good luck!")
 
+
+def start_game(response):
+    """
+    Function will prompt user if they want to start the game. If yes, the game will start
+    """
+    while True:
+        yes_set = {"YES", "yes", "y"}
+        no_set = {"NO", "no", "n"}
+        try:
+            if response in yes_set:
+                main()
+            elif response in no_set:
+                print("TOO BAD! WAR WAITS FOR NO ONE!")
+                main()
+        except ValueError:
+            print('Enter "y" or "n"')
+
+
+game_start = input("Ready? y/n: \n")
+start_game(game_start)
 # END
