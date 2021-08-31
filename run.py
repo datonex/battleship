@@ -6,6 +6,7 @@ import string
 
 # Variables
 grid_size = 9
+num_ships = 10
 board = [['.'] * grid_size for i in range(grid_size)]
 alphabet_list = list(string.ascii_uppercase)
 total_turns = 2
@@ -92,8 +93,28 @@ def game_restart(response):
         except ValueError:
             print('Enter "y" or "n"')
 
-# ships = [[math.floor(random.random()*5), math.floor(random.random()*5)]
-#          for i in range(10)]
+
+def get_ships():
+
+    ships_coord_list = []
+    test_list = []
+    while len(ships_coord_list) <= num_ships:
+        test_list.append([math.floor(random.random()*grid_size + 1),
+                         math.floor(random.random()*grid_size + 1)])
+
+        for coord in test_list:
+            if coord not in ships_coord_list:
+                ships_coord_list.append(coord)
+
+    row_list = []
+    col_list = []
+    for coord in ships_coord_list:
+        row_list.append(coord[0])
+        col_list.append(coord[1])
+
+    row_tuple = tuple(row_list)
+    col_tuple = tuple(col_list)
+    return row_tuple, col_tuple
 
 
 def main():
@@ -124,7 +145,6 @@ def main():
             break
 
         if board[guess_row - 1][guess_col - 1] == 'X' or board[guess_row - 1][guess_col - 1] == '*':
-            print(turn)
             print('You already guessed this one -_-')
             print('-' * 35)
         else:
