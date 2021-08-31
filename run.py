@@ -9,7 +9,7 @@ grid_size = 9
 board = [['.'] * grid_size for i in range(grid_size)]
 alphabet_list = list(string.ascii_uppercase)
 total_turns = 2
-# total_turns = math.floor(grid_size**2/1 35)
+# total_turns = math.floor(grid_size**2/1.25)
 
 # Draw Board Class for computer and for user
 
@@ -82,6 +82,10 @@ ship_row = random_row(board)
 ship_col = random_col(board) - 1
 
 
+# ships = [[math.floor(random.random()*5), math.floor(random.random()*5)]
+#          for i in range(10)]
+
+
 def main():
     turn = 0
     print(turn)
@@ -107,7 +111,6 @@ def main():
         else:
             if board[guess_row - 1][guess_col - 1] == 'X' or board[guess_row - 1][guess_col - 1] == '*':
                 print('You guessed this one already -_-')
-
             else:
                 print('Your aim is WAY off! \n')
                 board[guess_row - 1][guess_col - 1] = '*'
@@ -118,6 +121,6 @@ def main():
                     print('-' * 35)
                     
 
-main()
+# main()
 
 # END
