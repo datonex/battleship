@@ -8,17 +8,18 @@ import string
 grid_size = 9
 num_ships = 10
 board = [['.'] * grid_size for i in range(grid_size)]
+
 alphabet_list = list(string.ascii_uppercase)
-total_turns = 2
+
+total_turns = math.floor(grid_size**2)
 # total_turns = math.floor(grid_size**2/1.25)
 
-# Draw Board Class for computer and for user
 
 # Functions
 
 
 def print_board(board_in):
-    # Use alphabet to represent columns of game board.
+
     # https://www.delftstack.com/howto/python/python-alphabet-list/
     print('\n  ' + ' '.join(str(i)
           for i in list(map(chr, range(65, 65 + grid_size)))))
@@ -27,6 +28,7 @@ def print_board(board_in):
 
 
 def random_row(board_in):
+
     row = random.randint(1, len(board_in) - 1)
     return row
 
@@ -94,40 +96,15 @@ def game_restart(response):
             print('Enter "y" or "n"')
 
 
-def get_ships():
-
-    ships_coord_list = []
-    test_list = []
-    while len(ships_coord_list) <= num_ships:
-        test_list.append([math.floor(random.random()*grid_size + 1),
-                         math.floor(random.random()*grid_size + 1)])
-
-        for coord in test_list:
-            if coord not in ships_coord_list:
-                ships_coord_list.append(coord)
-
-    row_list = []
-    col_list = []
-    for coord in ships_coord_list:
-        row_list.append(coord[0])
-        col_list.append(coord[1])
-
-    row_tuple = tuple(row_list)
-    col_tuple = tuple(col_list)
-    return row_tuple, col_tuple
-
-
 def main():
     board = [['.'] * grid_size for i in range(grid_size)]
     ship_row = random_row(board)
     ship_col = random_col(board) - 1
+    ships = 0
     turn = 0
 
     print_board(board)
     while turn < total_turns:
-
-        # Remove print statement at end of project
-        print(letter_and_index_conversion(ship_col, grid_size), ship_row)
 
         guess_col = get_col()
         guess_row = get_row()
@@ -137,29 +114,36 @@ def main():
             f'You entered: {letter_and_index_conversion(guess_col, grid_size)}{guess_row} \n')
 
         if guess_row == ship_row and guess_col == ship_col:
-            board[guess_row][guess_col] = 'X'
+            board[guess_row - 1][guess_col - 1] = 'X'
             print('Congratulations Captain! You got a hit!')
             print_board(board)
             print('-' * 35)
             turn += 1
-            break
-
-        if board[guess_row - 1][guess_col - 1] == 'X' or board[guess_row - 1][guess_col - 1] == '*':
-            print('You already guessed this one -_-')
-            print('-' * 35)
-        else:
-            print('Your aim is WAY off! \n')
-            board[guess_row - 1][guess_col - 1] = '*'
-            print_board(board)
-            print('-' * 35)
-            turn += 1
-            if turn == total_turns:
-                print('Game Over! You ran out of turns')
-                print('-' * 35)
+            ships += 1
+            ship_row = random_row(board)
+            ship_col = random_col(board)
+            if ships == 10:
+                print('Congratulations Captain! You won!')
                 game_prompt = input('Restart? y/n: \n')
                 game_restart(game_prompt)
+        else:
+            if board[guess_row - 1][guess_col - 1] == 'X' or board[guess_row - 1][guess_col - 1] == '*':
+                print('You already guessed this one -_-')
+                print('-' * 35)
+            else:
+                print('Your aim is WAY off! \n')
+                board[guess_row - 1][guess_col - 1] = '*'
+                print_board(board)
+                print('-' * 35)
+                turn += 1
+                if turn == total_turns:
+                    print('Game Over! You ran out of turns')
+                    print('-' * 35)
+                    game_prompt = input('Restart? y/n: \n')
+                    game_restart(game_prompt)
 
         print(f'Turn {turn + 1} of {total_turns}')
+        print(f'You have {10 - ships} ships left')
 
 
 main()
