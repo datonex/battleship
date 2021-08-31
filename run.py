@@ -77,20 +77,34 @@ def get_col():
                 f'\nPlease enter a letter for the column between {alphabet_list[0]} and {alphabet_list[grid_size - 1]}')
 
 
-print_board(board)
-ship_row = random_row(board)
-ship_col = random_col(board) - 1
+def game_restart(response):
 
+    while True:
+
+        yes_set = {'YES', 'yes', 'y'}
+        no_set = {'NO', 'no', 'n'}
+        try:
+            if response in yes_set:
+                main()
+            elif response in no_set:
+                print('Thanks for playing :)\n')
+                exit()
+        except ValueError:
+            print('Enter a "y" or "n"')
 
 # ships = [[math.floor(random.random()*5), math.floor(random.random()*5)]
 #          for i in range(10)]
 
 
 def main():
+    board = [['.'] * grid_size for i in range(grid_size)]
+    ship_row = random_row(board)
+    ship_col = random_col(board) - 1
     turn = 0
-    print(turn)
+
+    print_board(board)
     while turn < total_turns:
-        print('Turn', turn + 1, 'of', total_turns)        
+        print('Turn', turn + 1, 'of', total_turns)
 
         # Remove print statement at end of project
         print(letter_and_index_conversion(ship_col, grid_size), ship_row)
@@ -119,8 +133,10 @@ def main():
                 if turn == total_turns:
                     print('Game Over! You ran out of turns')
                     print('-' * 35)
-                    
+                    game_prompt = input('Restart? y/n: \n')
+                    game_restart(game_prompt)
 
-# main()
+
+main()
 
 # END
