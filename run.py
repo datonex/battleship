@@ -80,7 +80,7 @@ def get_col():
 def game_restart(response):
 
     while True:
-
+        # https://stackoverflow.com/questions/7571635/fastest-way-to-check-if-a-value-exists-in-a-list
         yes_set = {'YES', 'yes', 'y'}
         no_set = {'NO', 'no', 'n'}
         try:
@@ -90,7 +90,7 @@ def game_restart(response):
                 print('Thanks for playing :)\n')
                 exit()
         except ValueError:
-            print('Enter a "y" or "n"')
+            print('Enter "y" or "n"')
 
 # ships = [[math.floor(random.random()*5), math.floor(random.random()*5)]
 #          for i in range(10)]
@@ -104,14 +104,12 @@ def main():
 
     print_board(board)
     while turn < total_turns:
-        print('Turn', turn + 1, 'of', total_turns)
 
         # Remove print statement at end of project
         print(letter_and_index_conversion(ship_col, grid_size), ship_row)
 
         guess_col = get_col()
         guess_row = get_row()
-        turn += 1
 
         print('-' * 35)
         print(
@@ -122,19 +120,26 @@ def main():
             print('Congratulations Captain! You got a hit!')
             print_board(board)
             print('-' * 35)
+            turn += 1
+            break
+
+        if board[guess_row - 1][guess_col - 1] == 'X' or board[guess_row - 1][guess_col - 1] == '*':
+            print(turn)
+            print('You already guessed this one -_-')
+            print('-' * 35)
         else:
-            if board[guess_row - 1][guess_col - 1] == 'X' or board[guess_row - 1][guess_col - 1] == '*':
-                print('You guessed this one already -_-')
-            else:
-                print('Your aim is WAY off! \n')
-                board[guess_row - 1][guess_col - 1] = '*'
-                print_board(board)
+            print('Your aim is WAY off! \n')
+            board[guess_row - 1][guess_col - 1] = '*'
+            print_board(board)
+            print('-' * 35)
+            turn += 1
+            if turn == total_turns:
+                print('Game Over! You ran out of turns')
                 print('-' * 35)
-                if turn == total_turns:
-                    print('Game Over! You ran out of turns')
-                    print('-' * 35)
-                    game_prompt = input('Restart? y/n: \n')
-                    game_restart(game_prompt)
+                game_prompt = input('Restart? y/n: \n')
+                game_restart(game_prompt)
+
+        print(f'Turn {turn + 1} of {total_turns}')
 
 
 main()
