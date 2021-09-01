@@ -43,7 +43,8 @@ def random_col(board_in):
 
 def letter_and_index_conversion(value, grid_size):
     """
-    Function will convert all letters to an integer or integer to a capital letter
+    Function will convert all letters to an integer
+    or integer to a capital letter
     """
 
     number_list = [i for i in range(1, 27)]
@@ -60,7 +61,8 @@ def letter_and_index_conversion(value, grid_size):
 
 def get_row():
     """
-    Function will prompt user for input of the row. It will also check if the input is the correct data type and display errors accordingly
+    Function will prompt user for input of the row. It will also check if
+    the input is the correct data type and display errors accordingly
     """
 
     while True:
@@ -76,7 +78,8 @@ def get_row():
 
 def get_col():
     """
-    Function will prompt user for input of the column. It will also check if the input is the correct data type and display errors accordingly
+    Function will prompt user for input of the column. It will also check if
+    the input is the correct data type and display errors accordingly
     """
 
     while True:
@@ -95,7 +98,8 @@ def get_col():
 
 def game_restart(response):
     """
-    Function will prompt user if they want to restart the game. If yes, the board will be reset and the game starts again if not the game will end
+    Function will prompt user if they want to restart the game.
+    If yes, the board will be reset and the game starts again if not the game will end
     """
     while True:
         # https://stackoverflow.com/questions/7571635/fastest-way-to-check-if-a-value-exists-in-a-list
@@ -148,8 +152,8 @@ def main():
                 game_restart(game_prompt)
         else:
             if (
-                board[guess_row - 1][guess_col - 1] == "X"
-                or board[guess_row - 1][guess_col - 1] == "*"
+                board[guess_row - 1][guess_col - 1] == "X" or
+                board[guess_row - 1][guess_col - 1] == "*"
             ):
                 print("You already guessed this one -_-")
                 print("-" * 35)
