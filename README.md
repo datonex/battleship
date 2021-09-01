@@ -57,6 +57,36 @@ Game is made using python functions
 
 ## Deployment
 
+Game was deployed using [Heroku](https://www.heroku.com/)
+
+- In your vscode or gitpod terminal inside your current worskspace:
+  type in:
+  - `touch requirements.txt`
+  - `pip3 freeze > requirements.txt`
+
+This is to add dependencies to your deployed project
+
+- To deploy this project you need a Heroku account
+
+- Once logged in, click the CREATE NEW APP button
+
+- Add a unique name for your project in lowercase and spaces separated by '-' the create new app
+
+- Click on the settings page and add the Python THEN the Node.js build packs
+
+- Go to the Deploy tab
+
+- Connect your GitHub account and select the 'main' brach of your project
+
+- Near the bottom on the page, you have two options on how to deploy your project. You can either do:
+
+  - Automatic Deployment which will deploy your project after every change to your main github repository
+  - Manual Deployment where the user has to prompt for the deployment.
+
+- Which ever option you decide you have to do an initial Manual deployment to Heroku for the first upload.
+
+- The app will install the necessary files and dependencies. Finally, a message was displayed: 'Your app was successfully deployed.'
+
 ## Credits
 
 - [Codeacademy Python 2: Lists and Functions](https://www.codecademy.com/courses/learn-python/lessons/battleship)
