@@ -12,11 +12,27 @@ The aim of the game is to sink the enemies battleships:
 
 - If they don't hit all the ships within the number of turn they lose the game
 
+## Technologies
+
+[Python](https://www.python.org) - main game language and it's default modules
+[VS Code](https://code.visualstudio.com/) - To set up Python environment and text editor
+[Heroku] for site deployment and to store created files
+
 ## Features
 
 - One player game
 
--
+- Instructions of the game
+
+- User feedback for errors
+
+- Grid elements so that user can distinguish between empty spaces, ships and misses
+
+- Game Over prompt, Restart Game prompt to allow user to control start of game within the console.
+
+- Number of turns are displayed to the user
+
+- Number of ships left are displayed to the user
 
 ### Future Features
 
@@ -36,8 +52,6 @@ Game is made using python functions
 
 ### Bugs
 
-- Game start prompt will not start the game loop if too many gaps are typed in the console.
-
 #### Solved bugs
 
 - Fix bug where value entered in terminal did not match the board index.
@@ -48,18 +62,19 @@ Game is made using python functions
 
 #### Unfixed bugs
 
-- unfixed bugs description
+- Game start prompt will not start the game loop if too many gaps are typed in the console.
 
 #### Validator testing
 
 - PEP8
-  - errors found or not found
+
+<img src="./PEP8_online.jpeg" ></img>
 
 ## Deployment
 
 Game was deployed using [Heroku](https://www.heroku.com/)
 
-- In your vscode or gitpod terminal inside your current worskspace:
+- In your vscode or gitpod terminal inside your current workspace:
   type in:
   - `touch requirements.txt`
   - `pip3 freeze > requirements.txt`
@@ -87,8 +102,8 @@ This is to add dependencies to your deployed project
 
 - The app will install the necessary files and dependencies. Finally, a message was displayed: 'Your app was successfully deployed.'
 
-## Credits
+## Acknowledgements
 
-- [Codeacademy Python 2: Lists and Functions](https://www.codecademy.com/courses/learn-python/lessons/battleship)
+- [Codeacademy Python 2: Lists and Functions](https://www.codecademy.com/courses/learn-python/lessons/battleship) Template that helped me build the game logic
 - [ASCII table](http://sticksandstones.kstrom.com/appen.html)
 - [Alphabet string](https://www.kite.com/python/answers/how-to-make-a-list-of-the-alphabet-in-python)
