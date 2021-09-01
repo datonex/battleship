@@ -125,7 +125,6 @@ def main():
     print_board(board)
     while turn < total_turns:
 
-        print(letter_and_index_conversion(ship_col, grid_size), ship_row)
         guess_col = get_col()
         guess_row = get_row()
 
