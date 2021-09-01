@@ -1,6 +1,4 @@
-# Battleshipasaurus / B4ttl3sh1p
-
-! # B4ttl3sh1p (potential game name)
+# Battleshipasaurus
 
 Battleshipasaurus is a Battleship game created using **Python**, and runs on a mock terminal on Heroku.
 
@@ -8,36 +6,45 @@ Battleshipasaurus is a Battleship game created using **Python**, and runs on a m
 
 ## Instructions
 
-Battleshipasaurus
+The aim of the game is to sink the enemies battleships:
+
+- If they correctly guess all the ships on the board they win
+
+- If they don't hit all the ships within the number of turn they lose the game
 
 ## Features
 
-### Existing Features
+- One player game
 
-- Feature one
-
-  - Description here
-
-- Feature two
-  - Description here include images
+-
 
 ### Future Features
 
+- User to play against the computer
+
+- Custom grid size
+
+- Increased game difficulty
+
+- Option to add different types of ships like the Carrier, Cruiser, Submarine etc.
+
 ## Data Model
 
-class and methods used to create program
+Game is made using python functions
 
 ## Testing
 
 ### Bugs
 
-- Fix bug where value entered in terminal did not match the board index.
-
-- Fix bug where console with give error message when script is run for the first time
+- Game start prompt will not start the game loop if too many gaps are typed in the console.
 
 #### Solved bugs
 
-- Fixed bug description
+- Fix bug where value entered in terminal did not match the board index.
+
+- Fix bug where console with give valueError when game is run for the first time
+
+- Fix bug where game over prompt was not being triggered at the end of game loop
 
 #### Unfixed bugs
 
